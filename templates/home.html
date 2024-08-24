@@ -1,0 +1,483 @@
+<html>
+<body>
+    <div class="login">
+       <h1>Vehicle Price Prediction</h1>
+   
+       <form action="{{ url_for('predict_datapoint')}}" method="post">
+        <h1>
+            <legend>Enter Vehicle Details for Price Prediction</legend>
+        </h1>
+
+        <div class="mb-3">
+            <label class="form-label">Brand</label>
+            <select class="form-control" name="brand" required>
+                <option selected disabled value="">Select Brand</option>
+                <option value="Ford">Ford</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Lexus">Lexus</option>
+                <option value="INFINITI">INFINITI</option>
+                <option value="Audi">Audi</option>
+                <option value="Acura">Acura</option>
+                <option value="BMW">BMW</option>
+                <option value="Tesla">Tesla</option>
+                <option value="Land">Land Rover</option>
+                <option value="Aston">Aston Martin</option>
+                <option value="Toyota">Toyota</option>
+                <option value="Lincoln">Lincoln</option>
+                <option value="Jaguar">Jaguar</option>
+                <option value="Mercedes-Benz">Mercedes-Benz</option>
+                <option value="Dodge">Dodge</option>
+                <option value="Nissan">Nissan</option>
+                <option value="Genesis">Genesis</option>
+                <option value="Chevrolet">Chevrolet</option>
+                <option value="Kia">Kia</option>
+                <option value="Jeep">Jeep</option>
+                <option value="Bentley">Bentley</option>
+                <option value="Honda">Honda</option>
+                <option value="Lucid">Lucid</option>
+                <option value="MINI">MINI</option>
+                <option value="Porsche">Porsche</option>
+                <option value="Hummer">Hummer</option>
+                <option value="Chrysler">Chrysler</option>
+                <option value="Volvo">Volvo</option>
+                <option value="Cadillac">Cadillac</option>
+                <option value="Lamborghini">Lamborghini</option>
+                <option value="Maserati">Maserati</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="Subaru">Subaru</option>
+                <option value="Rivian">Rivian</option>
+                <option value="GMC">GMC</option>
+                <option value="RAM">RAM</option>
+                <option value="Alfa">Alfa Romeo</option>
+                <option value="Ferrari">Ferrari</option>
+                <option value="Scion">Scion</option>
+                <option value="Mitsubishi">Mitsubishi</option>
+                <option value="Mazda">Mazda</option>
+                <option value="Saturn">Saturn</option>
+                <option value="Bugatti">Bugatti</option>
+                <option value="Polestar">Polestar</option>
+                <option value="Rolls-Royce">Rolls-Royce</option>
+                <option value="McLaren">McLaren</option>
+                <option value="Buick">Buick</option>
+                <option value="Lotus">Lotus</option>
+                <option value="Pontiac">Pontiac</option>
+                <option value="FIAT">FIAT</option>
+                <option value="Karma">Karma</option>
+                <option value="Saab">Saab</option>
+                <option value="Mercury">Mercury</option>
+                <option value="Plymouth">Plymouth</option>
+                <option value="smart">smart</option>
+                <option value="Maybach">Maybach</option>
+                <option value="Suzuki">Suzuki</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Model</label>
+            <input class="form-control" type="text" name="model" placeholder="Enter Vehicle Model" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Model Year</label>
+            <select class="form-control" name="model_year" required>
+                <option selected disabled value="">Select Model Year</option>
+                <option value="1974">1974</option>
+                <option value="1992">1992</option>
+                <option value="1993">1993</option>
+                <option value="1994">1994</option>
+                <option value="1995">1995</option>
+                <option value="1996">1996</option>
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+                <option value="2003">2003</option>
+                <option value="2004">2004</option>
+                <option value="2005">2005</option>
+                <option value="2006">2006</option>
+                <option value="2007">2007</option>
+                <option value="2008">2008</option>
+                <option value="2009">2009</option>
+                <option value="2010">2010</option>
+                <option value="2011">2011</option>
+                <option value="2012">2012</option>
+                <option value="2013">2013</option>
+                <option value="2014">2014</option>
+                <option value="2015">2015</option>
+                <option value="2016">2016</option>
+                <option value="2017">2017</option>
+                <option value="2018">2018</option>
+                <option value="2019">2019</option>
+                <option value="2020">2020</option>
+                <option value="2021">2021</option>
+                <option value="2022">2022</option>
+                <option value="2023">2023</option>
+                <option value="2024">2024</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Mileage</label>
+            <input class="form-control" type="text" name="milage" placeholder="Enter Mileage (e.g., '51,000 mi.')" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Fuel Type</label>
+            <select class="form-control" name="fuel_type" required>
+                <option selected disabled value="">Select Fuel Type</option>
+                <option value="E85 Flex Fuel">E85 Flex Fuel</option>
+                <option value="Gasoline">Gasoline</option>
+                <option value="Hybrid">Hybrid</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Plug-In Hybrid">Plug-In Hybrid</option>
+                <option value="not supported">Not Supported</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Engine</label>
+            <input class="form-control" type="text" name="engine" placeholder="Enter Engine Details (e.g., '3.7L V6')" required>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Transmission</label>
+            <select class="form-control" name="transmission" required>
+                <option selected disabled value="">Select Transmission</option>
+                <option value="6-Speed A/T">6-Speed A/T</option>
+                <option value="8-Speed Automatic">8-Speed Automatic</option>
+                <option value="Automatic">Automatic</option>
+                <option value="7-Speed A/T">7-Speed A/T</option>
+                <option value="F">F</option>
+                <option value="A/T">A/T</option>
+                <option value="8-Speed A/T">8-Speed A/T</option>
+                <option value="Transmission w/Dual Shift Mode">Transmission w/Dual Shift Mode</option>
+                <option value="9-Speed Automatic">9-Speed Automatic</option>
+                <option value="6-Speed M/T">6-Speed M/T</option>
+                <option value="10-Speed A/T">10-Speed A/T</option>
+                <option value="9-Speed A/T">9-Speed A/T</option>
+                <option value="5-Speed A/T">5-Speed A/T</option>
+                <option value="1-Speed A/T">1-Speed A/T</option>
+                <option value="Automatic CVT">Automatic CVT</option>
+                <option value="7-Speed Automatic with Auto-Shift">7-Speed Automatic with Auto-Shift</option>
+                <option value="CVT-F">CVT-F</option>
+                <option value="M/T">M/T</option>
+                <option value="6-Speed Automatic with Auto-Shift">6-Speed Automatic with Auto-Shift</option>
+                <option value="10-Speed Automatic">10-Speed Automatic</option>
+                <option value="CVT Transmission">CVT Transmission</option>
+                <option value="4-Speed A/T">4-Speed A/T</option>
+                <option value="6-Speed Automatic">6-Speed Automatic</option>
+                <option value="4-Speed Automatic">4-Speed Automatic</option>
+                <option value="7-Speed M/T">7-Speed M/T</option>
+                <option value="8-Speed Automatic with Auto-Shift">8-Speed Automatic with Auto-Shift</option>
+                <option value="5-Speed Automatic">5-Speed Automatic</option>
+                <option value="8-SPEED AT">8-SPEED AT</option>
+                <option value="1-Speed Automatic">1-Speed Automatic</option>
+                <option value="5-Speed M/T">5-Speed M/T</option>
+                <option value="Manual">Manual</option>
+                <option value="6-Speed Manual">6-Speed Manual</option>
+                <option value="Variable">Variable</option>
+                <option value="2">2</option>
+                <option value="7-Speed Manual">7-Speed Manual</option>
+                <option value="Automatic, 9-Spd 9G-Tronic">Automatic, 9-Spd 9G-Tronic</option>
+                <option value="Automatic, 8-Spd">Automatic, 8-Spd</option>
+                <option value="Automatic, 8-Spd Sport w/Sport & Manual Modes">Automatic, 8-Spd Sport w/Sport & Manual Modes</option>
+                <option value="Auto, 6-Spd w/CmdShft">Auto, 6-Spd w/CmdShft</option>
+                <option value="Transmission Overdrive Switch">Transmission Overdrive Switch</option>
+                <option value="7-Speed Automatic">7-Speed Automatic</option>
+                <option value="Automatic, 8-Spd PDK Dual-Clutch">Automatic, 8-Spd PDK Dual-Clutch</option>
+                <option value="Automatic, 8-Spd M STEPTRONIC w/Drivelogic, Sport & Manual Modes">Automatic, 8-Spd M STEPTRONIC w/Drivelogic, Sport & Manual Modes</option>
+                <option value="Automatic, 8-Spd Dual-Clutch">Automatic, 8-Spd Dual-Clutch</option>
+                <option value="6-Speed">6-Speed</option>
+                <option value="Single-Speed Fixed Gear">Single-Speed Fixed Gear</option>
+                <option value="Automatic, 10-Spd">Automatic, 10-Spd</option>
+                <option value="2-Speed Automatic">2-Speed Automatic</option>
+                <option value="7-Speed">7-Speed</option>
+                <option value="Automatic, 7-Spd S tronic Dual-Clutch">Automatic, 7-Spd S tronic Dual-Clutch</option>
+                <option value="Manual, 6-Spd">Manual, 6-Spd</option>
+                <option value="6-Speed Electronically Controlled Automatic with O">6-Speed Electronically Controlled Automatic with O</option>
+                <option value="6 Speed At/Mt">6 Speed At/Mt</option>
+                <option value="8-SPEED A/T">8-SPEED A/T</option>
+                <option value="10-Speed Automatic with Overdrive">10-Speed Automatic with Overdrive</option>
+                <option value="7-Speed DCT Automatic">7-Speed DCT Automatic</option>
+                <option value="9-Speed Automatic with Auto-Shift">9-Speed Automatic with Auto-Shift</option>
+                <option value="SCHEDULED FOR OR IN PRODUCTION">SCHEDULED FOR OR IN PRODUCTION</option>
+                <option value="2-Speed A/T">2-Speed A/T</option>
+                <option value="6 Speed Mt">6 Speed Mt</option>
+                <option value="8-Speed Manual">8-Speed Manual</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Exterior Color</label>
+            <select class="form-control" name="ext_col" required>
+                <option selected disabled value="">Select Exterior Color</option>
+                <option value="Black">Black</option>
+                <option value="Moonlight Cloud">Moonlight Cloud</option>
+                <option value="Blue">Blue</option>
+                <option value="Glacier White Metallic">Glacier White Metallic</option>
+                <option value="Silver">Silver</option>
+                <option value="Green">Green</option>
+                <option value="Fuji White">Fuji White</option>
+                <option value="Yellow">Yellow</option>
+                <option value="White">White</option>
+                <option value="Gray">Gray</option>
+                <option value="Purple">Purple</option>
+                <option value="Iconic Silver Metallic">Iconic Silver Metallic</option>
+                <option value="Mythos Black Metallic">Mythos Black Metallic</option>
+                <option value="Red">Red</option>
+                <option value="Gold">Gold</option>
+                <option value="Lunar Silver Metallic">Lunar Silver Metallic</option>
+                <option value="Mountain Air Metallic">Mountain Air Metallic</option>
+                <option value="Caspian Blue">Caspian Blue</option>
+                <option value="Tango Red Metallic">Tango Red Metallic</option>
+                <option value="Alpine White">Alpine White</option>
+                <option value="BLU ELEOS">BLU ELEOS</option>
+                <option value="Horizon Blue">Horizon Blue</option>
+                <option value="Granite Crystal Clearcoat Metallic">Granite Crystal Clearcoat Metallic</option>
+                <option value="Orange">Orange</option>
+                <option value="Beige">Beige</option>
+                <option value="Rift Metallic">Rift Metallic</option>
+                <option value="Atomic Silver">Atomic Silver</option>
+                <option value="Summit White">Summit White</option>
+                <option value="Imperial Blue Metallic">Imperial Blue Metallic</option>
+                <option value="Magnetic Gray Clearcoat">Magnetic Gray Clearcoat</option>
+                <option value="Bright White Clearcoat">Bright White Clearcoat</option>
+                <option value="Typhoon Gray">Typhoon Gray</option>
+                <option value="Crystal Black Silica">Crystal Black Silica</option>
+                <option value="Arctic Gray Metallic">Arctic Gray Metallic</option>
+                <option value="Selenite Grey Metallic">Selenite Grey Metallic</option>
+                <option value="Ultra Black">Ultra Black</option>
+                <option value="Lunare White Metallic">Lunare White Metallic</option>
+                <option value="Hyper Red">Hyper Red</option>
+                <option value="Daytona Gray Pearl Effect">Daytona Gray Pearl Effect</option>
+                <option value="Vik Black">Vik Black</option>
+                <option value="Pacific Blue Metallic">Pacific Blue Metallic</option>
+                <option value="Obsidian Black Metallic">Obsidian Black Metallic</option>
+                <option value="Silver Ice Metallic">Silver Ice Metallic</option>
+                <option value="Sonic Silver Metallic">Sonic Silver Metallic</option>
+                <option value="Nightfall Mica">Nightfall Mica</option>
+                <option value="Apex Blue">Apex Blue</option>
+                <option value="Go Mango!">Go Mango!</option>
+                <option value="Ingot Silver Metallic">Ingot Silver Metallic</option>
+                <option value="Midnight Black Metallic">Midnight Black Metallic</option>
+                <option value="Black Clearcoat">Black Clearcoat</option>
+                <option value="Thunder Gray">Thunder Gray</option>
+                <option value="Bianco Monocerus">Bianco Monocerus</option>
+                <option value="Verde">Verde</option>
+                <option value="Wind Chill Pearl">Wind Chill Pearl</option>
+                <option value="Mythos Black">Mythos Black</option>
+                <option value="Patriot Blue Pearlcoat">Patriot Blue Pearlcoat</option>
+                <option value="Black Cherry">Black Cherry</option>
+                <option value="Yulong White">Yulong White</option>
+                <option value="Donington Grey Metallic">Donington Grey Metallic</option>
+                <option value="Ruby Red Metallic Tinted Clearcoat">Ruby Red Metallic Tinted Clearcoat</option>
+                <option value="Platinum Quartz Metallic">Platinum Quartz Metallic</option>
+                <option value="Matador Red Metallic">Matador Red Metallic</option>
+                <option value="Blu">Blu</option>
+                <option value="Mosaic Black Metallic">Mosaic Black Metallic</option>
+                <option value="Jungle Green">Jungle Green</option>
+                <option value="BLACK">BLACK</option>
+                <option value="Deep Crystal Blue Mica">Deep Crystal Blue Mica</option>
+                <option value="Beluga Black">Beluga Black</option>
+                <option value="Eiger Grey">Eiger Grey</option>
+                <option value="Ebony Black">Ebony Black</option>
+                <option value="Brown">Brown</option>
+                <option value="Indus Silver">Indus Silver</option>
+                <option value="Ibis White">Ibis White</option>
+                <option value="Bianco Icarus Metallic">Bianco Icarus Metallic</option>
+                <option value="Infrared Tintcoat">Infrared Tintcoat</option>
+                <option value="Midnight Black">Midnight Black</option>
+                <option value="Phytonic Blue Metallic">Phytonic Blue Metallic</option>
+                <option value="Quartz White">Quartz White</option>
+                <option value="Rapid Red Metallic Tinted Clearcoat">Rapid Red Metallic Tinted Clearcoat</option>
+                <option value="Cobra Beige Metallic">Cobra Beige Metallic</option>
+                <option value="Pure White">Pure White</option>
+                <option value="Snow White Pearl">Snow White Pearl</option>
+                <option value="DB Black Clearcoat">DB Black Clearcoat</option>
+                <option value="Firenze Red Metallic">Firenze Red Metallic</option>
+                <option value="Anodized Blue Metallic">Anodized Blue Metallic</option>
+                <option value="MANUFAKTUR Diamond White Bright">MANUFAKTUR Diamond White Bright</option>
+                <option value="Red Obsession">Red Obsession</option>
+                <option value="Platinum Gray Metallic">Platinum Gray Metallic</option>
+                <option value="Remington Red Metallic">Remington Red Metallic</option>
+                <option value="Reflex Silver">Reflex Silver</option>
+                <option value="Deep Blue Metallic">Deep Blue Metallic</option>
+                <option value="Glacier Silver Metallic">Glacier Silver Metallic</option>
+                <option value="Carpathian Grey">Carpathian Grey</option>
+                <option value="Nightfall Gray Metallic">Nightfall Gray Metallic</option>
+                <option value="Lunar Rock">Lunar Rock</option>
+                <option value="Quartzite Grey Metallic">Quartzite Grey Metallic</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Interior Color</label>
+            <select class="form-control" name="int_col" required>
+                <option selected disabled value="">Select Interior Color</option>
+                <option value="Black">Black</option>
+                <option value="Gray">Gray</option>
+                <option value="Ebony.">Ebony.</option>
+                <option value="Green">Green</option>
+                <option value="Pimento / Ebony">Pimento / Ebony</option>
+                <option value="Brown">Brown</option>
+                <option value="White">White</option>
+                <option value="Beige">Beige</option>
+                <option value="Jet Black">Jet Black</option>
+                <option value="Light Gray">Light Gray</option>
+                <option value="Anthracite">Anthracite</option>
+                <option value="Red">Red</option>
+                <option value="Nero Ade">Nero Ade</option>
+                <option value="Blue">Blue</option>
+                <option value="Charcoal">Charcoal</option>
+                <option value="Rioja Red">Rioja Red</option>
+                <option value="Canberra Beige/Black">Canberra Beige/Black</option>
+                <option value="Roast">Roast</option>
+                <option value="Ivory / Ebony">Ivory / Ebony</option>
+                <option value="Silk Beige/Black">Silk Beige/Black</option>
+                <option value="Medium Pewter">Medium Pewter</option>
+                <option value="Ice">Ice</option>
+                <option value="Black / Express Red">Black / Express Red</option>
+                <option value="Obsidian Black">Obsidian Black</option>
+                <option value="Ebony">Ebony</option>
+                <option value="Orange">Orange</option>
+                <option value="Caramel">Caramel</option>
+                <option value="Orchid">Orchid</option>
+                <option value="Graphite">Graphite</option>
+                <option value="Tan/Ebony">Tan/Ebony</option>
+                <option value="Cappuccino">Cappuccino</option>
+                <option value="Nero">Nero</option>
+                <option value="Sahara Tan">Sahara Tan</option>
+                <option value="Hotspur">Hotspur</option>
+                <option value="Blk">Blk</option>
+                <option value="Black Onyx">Black Onyx</option>
+                <option value="Nougat Brown">Nougat Brown</option>
+                <option value="Titan Black">Titan Black</option>
+                <option value="Oyster W/Contrast">Oyster W/Contrast</option>
+                <option value="Silver">Silver</option>
+                <option value="Macchiato Beige/Black">Macchiato Beige/Black</option>
+                <option value="Sand Beige">Sand Beige</option>
+                <option value="Navy Pier">Navy Pier</option>
+                <option value="Parchment.">Parchment.</option>
+                <option value="Sarder Brown">Sarder Brown</option>
+                <option value="Grace White">Grace White</option>
+                <option value="Cloud">Cloud</option>
+                <option value="Espresso">Espresso</option>
+                <option value="Mesa">Mesa</option>
+                <option value="Whisper Beige">Whisper Beige</option>
+                <option value="Medium Dark Slate">Medium Dark Slate</option>
+                <option value="Gold">Gold</option>
+                <option value="Camel Leather">Camel Leather</option>
+                <option value="Tupelo">Tupelo</option>
+                <option value="Black/Red">Black/Red</option>
+                <option value="Parchment">Parchment</option>
+                <option value="Beluga Hide">Beluga Hide</option>
+                <option value="Charles Blue">Charles Blue</option>
+                <option value="Global Black">Global Black</option>
+                <option value="Titan Black / Quarzit">Titan Black / Quarzit</option>
+                <option value="Mocha">Mocha</option>
+                <option value="Portland">Portland</option>
+                <option value="Medium Light Camel">Medium Light Camel</option>
+                <option value="Black / Saddle">Black / Saddle</option>
+                <option value="Ash">Ash</option>
+                <option value="Ebony / Pimento">Ebony / Pimento</option>
+                <option value="Tan">Tan</option>
+                <option value="Mistral Gray / Raven">Mistral Gray / Raven</option>
+                <option value="Graystone">Graystone</option>
+                <option value="Satin Black">Satin Black</option>
+                <option value="Sandstone">Sandstone</option>
+                <option value="Medium Stone">Medium Stone</option>
+                <option value="ORANGE">ORANGE</option>
+                <option value="Pimento Red w/Ebony">Pimento Red w/Ebony</option>
+                <option value="Macchiato">Macchiato</option>
+                <option value="Ebony Black">Ebony Black</option>
+                <option value="Pearl Beige">Pearl Beige</option>
+                <option value="Sakhir Orange">Sakhir Orange</option>
+                <option value="Kyalami Orange">Kyalami Orange</option>
+                <option value="Almond Beige">Almond Beige</option>
+                <option value="Medium Earth Gray">Medium Earth Gray</option>
+                <option value="Diesel Gray / Black">Diesel Gray / Black</option>
+                <option value="Boulder">Boulder</option>
+                <option value="Walnut">Walnut</option>
+                <option value="Charcoal Black">Charcoal Black</option>
+                <option value="Dark Auburn">Dark Auburn</option>
+                <option value="Tan/Ebony/Ebony">Tan/Ebony/Ebony</option>
+                <option value="Amber">Amber</option>
+                <option value="Silk Beige/Espresso Brown">Silk Beige/Espresso Brown</option>
+                <option value="Black / Brown">Black / Brown</option>
+                <option value="Sakhir Orange/Black">Sakhir Orange/Black</option>
+                <option value="Black / Stone Grey">Black / Stone Grey</option>
+                <option value="AMG Black">AMG Black</option>
+                <option value="Slate">Slate</option>
+                <option value="BEIGE">BEIGE</option>
+                <option value="Canberra Beige">Canberra Beige</option>
+                <option value="Magma Red">Magma Red</option>
+                <option value="Saiga Beige">Saiga Beige</option>
+                <option value="Saddle Brown">Saddle Brown</option>
+                <option value="Light Titanium">Light Titanium</option>
+                <option value="Dark Gray">Dark Gray</option>
+                <option value="Platinum">Platinum</option>
+                <option value="Ebony/Light Oyster Stitch">Ebony/Light Oyster Stitch</option>
+                <option value="Shale">Shale</option>
+                <option value="Red/Black">Red/Black</option>
+                <option value="Agave Green">Agave Green</option>
+                <option value="Cobalt Blue">Cobalt Blue</option>
+                <option value="Deep Cypress">Deep Cypress</option>
+                <option value="Ceramic">Ceramic</option>
+                <option value="Camel">Camel</option>
+                <option value="Rhapsody Blue">Rhapsody Blue</option>
+                <option value="Light Platinum / Jet Black">Light Platinum / Jet Black</option>
+                <option value="Shara Beige">Shara Beige</option>
+                <option value="Dark Galvanized">Dark Galvanized</option>
+                <option value="Giallo Taurus / Nero Ade">Giallo Taurus / Nero Ade</option>
+                <option value="Yellow">Yellow</option>
+                <option value="Black w/Red Stitching">Black w/Red Stitching</option>
+                <option value="Black/Saddle Brown">Black/Saddle Brown</option>
+                <option value="Light Slate">Light Slate</option>
+                <option value="Carbon Black">Carbon Black</option>
+                <option value="Sport">Sport</option>
+                <option value="Medium Ash Gray">Medium Ash Gray</option>
+                <option value="Black/Graphite">Black/Graphite</option>
+                <option value="Macchiato/Magmagrey">Macchiato/Magmagrey</option>
+                <option value="Classic Red">Classic Red</option>
+                <option value="Chateau">Chateau</option>
+                <option value="Graphite w/Gun Metal">Graphite w/Gun Metal</option>
+                <option value="Tension">Tension</option>
+                <option value="Adrenaline Red">Adrenaline Red</option>
+                <option value="Hotspur Hide">Hotspur Hide</option>
+                <option value="Gray w/Blue Bolsters">Gray w/Blue Bolsters</option>
+                <option value="Very Light Cashmere">Very Light Cashmere</option>
+                <option value="Black / Gray">Black / Gray</option>
+                <option value="Deep Chestnut">Deep Chestnut</option>
+                <option value="Black / Graphite">Black / Graphite</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Accident History</label>
+            <select class="form-control" name="accident" required>
+                <option selected disabled value="">Select Accident History</option>
+                <option value="None reported">None reported</option>
+                <option value="At least 1 accident or damage reported">At least 1 accident or damage reported</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Clean Title</label>
+            <select class="form-control" name="clean_title" required>
+                <option selected disabled value="">Select Clean Title</option>
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <input class="btn btn-primary" type="submit" value="Predict Vehicle Price" required />
+        </div>
+    </form>
+    <h2>
+       The predicted price is {{results}}
+    </h2>
+   </body>
+</html>
