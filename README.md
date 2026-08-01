@@ -6,9 +6,8 @@ predicts market value, recommends an acquisition offer, estimates margin, flags
 risk, and records whether the recommendation was accepted, rejected, or
 overridden.
 
-The project is structured for recruiter review as an end-to-end ML product:
-model artifacts, FastAPI serving, pricing rules, decision tracking, and a React
-operations console.
+The system combines trained model artifacts, FastAPI serving, pricing rules,
+decision tracking, and a React operations console into one pricing workflow.
 
 ## Business Problem
 
@@ -133,8 +132,9 @@ pipelines on S3, SageMaker training and model registry, an ECS-hosted FastAPI
 service, RDS/PostgreSQL for decision history, CloudWatch monitoring, and a
 React frontend used by pricing or sales operations teams.
 
-## Recruiter View
+## Product Overview
 
-PriceWise demonstrates an end-to-end pricing decision product: a trained ML
-model served through FastAPI, business pricing rules, recommendation workflows,
-decision audit history, and a React console for pricing operations.
+PriceWise is an end-to-end pricing decision product. It serves a trained ML
+model through FastAPI, applies business pricing rules, generates offer
+recommendations, records decision history, and provides a React console for
+pricing operations.
