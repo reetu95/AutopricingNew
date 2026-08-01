@@ -6,8 +6,9 @@ predicts market value, recommends an acquisition offer, estimates margin, flags
 risk, and records whether the recommendation was accepted, rejected, or
 overridden.
 
-This public project uses a used-car dataset and contains no proprietary company
-data or code.
+The project is structured for recruiter review as an end-to-end ML product:
+model artifacts, FastAPI serving, pricing rules, decision tracking, and a React
+operations console.
 
 ## Business Problem
 
@@ -132,9 +133,8 @@ pipelines on S3, SageMaker training and model registry, an ECS-hosted FastAPI
 service, RDS/PostgreSQL for decision history, CloudWatch monitoring, and a
 React frontend used by pricing or sales operations teams.
 
-## Portfolio Context
+## Recruiter View
 
-This project is a public portfolio implementation of an auto-pricing workflow.
-It is designed to demonstrate machine learning model serving, pricing decision
-logic, API development, decision tracking, and production-ready architecture
-patterns without using proprietary company data or code.
+PriceWise demonstrates an end-to-end pricing decision product: a trained ML
+model served through FastAPI, business pricing rules, recommendation workflows,
+decision audit history, and a React console for pricing operations.
