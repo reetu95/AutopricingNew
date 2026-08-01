@@ -16,9 +16,9 @@ def get_requirements(file_path:str) -> List[str]:
 
 
 setup(
-name = 'AUTOPRICING C2B',
+name = 'autopricing-c2b',
 version = '0.0.1',
 author = 'Reetu',
-author_emial = 'reetuthimmaiah400@gmail.com',
+author_email = 'reetuthimmaiah400@gmail.com',
 packages = find_packages(),
 install_requires = get_requirements('requirements.txt'))

@@ -2,6 +2,13 @@
 __pycache__/
 *.py[cod]
 *$py.class
+.DS_Store
+venv/
+logs/
+data/*.db
+.codex_deps/
+node_modules/
+frontend/dist/
 
 # C extensions
 *.so

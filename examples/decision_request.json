@@ -1,0 +1,8 @@
+{
+  "quote_id": "Q-DEMO123",
+  "user_id": "pricing_user_01",
+  "decision": "accepted",
+  "recommended_offer": 12900,
+  "final_offer": 12900,
+  "reason": "Demo acceptance"
+}

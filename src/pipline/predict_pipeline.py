@@ -1,23 +1,38 @@
 import sys
-import pandas as pd 
-import os      
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from exception import CustomException
-from utils import load_object
-from src.components.data_transformation import DataTransformation
+from pathlib import Path
+
+import pandas as pd
+
+from src.exception import CustomException
+from src.file_utils import load_object
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[2]
+COMPONENTS_DIR = PROJECT_ROOT / "src" / "components"
+
+# Compatibility for old pickled preprocessing artifacts that referenced
+# data_transformation as a top-level module.
+if str(COMPONENTS_DIR) not in sys.path:
+    sys.path.append(str(COMPONENTS_DIR))
 
 class PredictPipeline:
     def __init__(self):
-        pass
+        self.model_path = PROJECT_ROOT / "artifactS" / "model.pkl"
+        self.preprocessor_path = PROJECT_ROOT / "artifactS" / "preprocessor.pkl"
+        self._model = None
+        self._preprocessor = None
 
-    def predict(self,features):
+    def _load_artifacts(self):
+        if self._model is None:
+            self._model = load_object(file_path=self.model_path)
+        if self._preprocessor is None:
+            self._preprocessor = load_object(file_path=self.preprocessor_path)
+
+    def predict(self, features):
         try:
-            model_path = '/Users/reetu/Documents/Projects/AutopricingnewC2B/artifactS/model.pkl'
-            preprocessor_path = '/Users/reetu/Documents/Projects/AutopricingnewC2B/artifactS/preprocessor.pkl'
-            model = load_object(file_path = model_path)
-            preprocessor = load_object(file_path = preprocessor_path)
-            data_scaled = preprocessor.transform(features)
-            preds = model.predict(data_scaled)
+            self._load_artifacts()
+            data_scaled = self._preprocessor.transform(features)
+            preds = self._model.predict(data_scaled)
             return preds
 
         except Exception as e:
@@ -36,8 +51,7 @@ class CustomData:
         ext_col: str,
         int_col: str,
         accident: str,
-        clean_title: str,
-        price: str
+        clean_title: str
     ):
         self.brand = brand
         self.model = model
@@ -50,7 +64,6 @@ class CustomData:
         self.int_col = int_col
         self.accident = accident
         self.clean_title = clean_title
-        self.price = price
 
     def get_data_as_data_frame(self):
         try:
@@ -65,8 +78,7 @@ class CustomData:
                 "ext_col": [self.ext_col],
                 "int_col": [self.int_col],
                 "accident": [self.accident],
-                "clean_title": [self.clean_title],
-                "price": [self.price]
+                "clean_title": [self.clean_title]
             }
 
             return pd.DataFrame(custom_data_input_dict)
